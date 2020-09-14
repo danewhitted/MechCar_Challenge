@@ -1,0 +1,101 @@
+Using a multiple linear regression model that predicts the mpg of MechaCar prototypes.
+
+Call:
+lm(formula = mpg ~ vlength + vweight + spangle + grclearance + 
+    AWD, data = MechaCar_mpg)
+
+Coefficients:
+(Intercept)      vlength      vweight      spangle  grclearance          AWD  
+ -1.040e+02    6.267e+00    1.245e-03    6.877e-02    3.546e+00   -3.411e+00 
+ 
+Call:
+lm(formula = mpg ~ vlength + vweight + spangle + grclearance + 
+    AWD, data = MechaCar_mpg)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-19.4701  -4.4994  -0.0692   5.4433  18.5849 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.040e+02  1.585e+01  -6.559 5.08e-08 ***
+vlength      6.267e+00  6.553e-01   9.563 2.60e-12 ***
+vweight      1.245e-03  6.890e-04   1.807   0.0776 .  
+spangle      6.877e-02  6.653e-02   1.034   0.3069    
+grclearance  3.546e+00  5.412e-01   6.551 5.21e-08 ***
+AWD         -3.411e+00  2.535e+00  -1.346   0.1852    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 8.774 on 44 degrees of freedom
+Multiple R-squared:  0.7149,	Adjusted R-squared:  0.6825 
+F-statistic: 22.07 on 5 and 44 DF,  p-value: 5.35e-11
+
+Which variables/coefficients provided a non-random amount of variance to the mpg values in the dataset?
+
+We can see from the summary that vehicle length(Pr(>|t|) = 2.60e-12), ground clearance(Pr(>|t|) = 5.21e-08), and the
+y-intercept (Pr(>|t|) = 5.08e-08).
+ 
+Is the slope of the linear model considered to be zero? Why or why not?
+
+The slope is not zero for the 3 variables: vehicle length, ground clearance and the y-intercept. The p-value of these variables are less than 0.05 which means they are significant predictors.  
+
+Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?
+
+This model should be able to predict mpg with 71% accuracy due the r-squared value being .71.
+
+
+Suspension Coil Summary:
+
+Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1463    1497    1500    1500    1501    1536 
+
+Shapiro-Wilk normality test
+
+data:  susp_coil$PSI
+W = 0.85286, p-value = 6.011e-11
+
+sd(susp_coil$PSI)
+[1] 8.73
+
+var(susp_coil$PSI)
+[1] 76.23
+
+The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per inch. Does the current manufacturing data meet this design specification? Why or why not?
+
+The suspension coil summary shows the data points are close together near the mean and median at 1500. The PSI standard deviation is not large enough to be of concern at 8.73. The variance of PSI is at 76.23, which should be fine as it is lower than 100. 
+
+
+Suspension Coil T-Test
+
+One Sample t-test
+
+data:  susp_coil$PSI
+t = -0.65784, df = 149, p-value = 0.5117
+alternative hypothesis: true mean is not equal to 1500
+95 percent confidence interval:
+ 1498.122 1500.940
+sample estimates:
+mean of x 
+ 1499.531 
+
+Assuming our significance level was the common 0.05 percent, our p-value is above our significance level (0.5117). Therefore, we do not have sufficient evidence to reject the null hypothesis, and we would state that the two means (sample vs population) are statistically similar.
+
+
+Design My Own Study
+
+This study's purpose is to show quantifiably how the MechaCar outperforms the other comparable cars on the market.
+Since we are comparing cars in the same category the price will be a variable. We will compare the price to performance to generate an overall value score. The car with the highest value score will be deemed the top performer.
+Other metrics will collect are fuel economy, interior design, smooth ride(suspension), handling (cornering), safety scores, most appealling package options (aesthetics), durability/reliability, 0 to 60mph speed test.
+
+We collect data from major automobile review sources like Motortrend, Car and Driver, and Kelly Blue Book.
+
+We will rank each vehicle in each category. The category scores will be totalled and we will find the mean score of each vehicle. The vehicle with the highest mean will be the top performer.
+
+Our hypothesis would be the following:
+H0: There is no statistical difference between our mean dataset and other comparable
+vehicles mean dataset on the market.
+Ha: The true mean of our dataset is GREATER than the mean of our competitors
+dataset.
+
+
